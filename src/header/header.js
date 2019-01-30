@@ -51,7 +51,6 @@ const Titles = props => {
 
 const Header = props => {
     const {classes} = props;
-    console.log(window.innerHeight);
     return(
         <Paper className={classes.paper} >
             <Grid container justify='space-evenly' alignItems='center' className={classes.gridContainer}>

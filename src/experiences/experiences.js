@@ -1,15 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Paper } from '@material-ui/core';
-import { Avatar } from '@material-ui/core';
-import { Grid } from '@material-ui/core';
-import { Typography } from '@material-ui/core';
-import { Divider } from '@material-ui/core';
-import { Button } from '@material-ui/core';
-import grey from '@material-ui/core/colors/grey';
+import { Paper, Avatar, Grid, Typography, Divider, Button } from '@material-ui/core';
+import { grey } from '@material-ui/core/colors';
 import { CalendarToday } from '@material-ui/icons';
-import angular from './avatars/angular.png';
 import EXPERIENCES from './data'
 
 const styles = theme => ({
@@ -24,7 +18,6 @@ const styles = theme => ({
     },
     avatar: {
         marginLeft: theme.spacing.unit,
-        // backgroundColor: theme.palette.primary.main,
         '&:hover': {
             backgroundColor: grey[200],
         },
@@ -44,14 +37,19 @@ const styles = theme => ({
 
 const Header = props => {
     const {languages, avatarClass} = props;
-    console.log(languages)
-    return(
-        <Grid container justify='flex-end'>
-            <Grid item>
-                <a title={languages[0].title} href={languages[0].website}>
-                    <Avatar alt={languages[0].title} src={languages[0].picture} className={avatarClass} />
+    const avatars = languages.map( language => {
+        const {title, website, picture} = language;
+        return(
+            <Grid item key={title}>
+                <a title={title} href={website}>
+                    <Avatar alt={title} src={picture} className={avatarClass} />
                 </a>
             </Grid>
+        );
+    });
+    return(
+        <Grid container justify='flex-end' direction='row'>
+            {avatars}
         </Grid>
     );
 };
@@ -97,17 +95,18 @@ const Content = props => {
 };
 
 const FooterButton = props => {
+    const {website: {title: content, href}} = props;
     return(
         <Grid container justify='center'>
-            <Button variant="contained" href="http://www.groupe-sii.com/fr" >
-                Groupe SII
+            <Button variant="contained" href={href} >
+                {content}
             </Button>
         </Grid>
     );
 };
 
 const Experience = props => {
-    const {classes, languages, title, context, period, description} = props;
+    const {classes, languages, title, context, period, description, website} = props;
     return(
         <Paper className={classes.paper}>
             <Header languages={languages} avatarClass={classes.avatar}/>
@@ -115,23 +114,27 @@ const Experience = props => {
             <Context context={context}/>
             <Date period={period} dateClass={classes.date} calendarClass={classes.calendar}/>
             <Content description={description} contentClass={classes.content}/>
-            <FooterButton />
+            {website &&
+                <FooterButton website={website}/>
+            }
         </Paper>
     );
 }
 
 const ExperiencesList = props => {
-    console.log(EXPERIENCES);
     const {classes} = props;
     const experiences = EXPERIENCES.map( experience =>{
+        const { languages, title, context, period, description, website } = experience;
         return(
-            <Experience
-                languages={experience.languages}
-                title={experience.title}
-                context={experience.context}
-                period={experience.period}
-                description={experience.description}
+            <Experience 
+                languages={languages}
+                title={title}
+                context={context}
+                period={period}
+                description={description}
+                website={website}
                 classes={classes}
+                key={title}
             />
         );
     });

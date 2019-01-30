@@ -2,49 +2,51 @@ import angularPic from './avatars/angular.png';
 import aureliaPic from './avatars/aurelia.png';
 import dialogflowPic from './avatars/dialogflow.jpg';
 import javaPic from './avatars/java.png';
+import jqueryPic from './avatars/jquery.jpg'
 import nodePic from './avatars/node.png';
 import pythonPic from './avatars/python.png';
+import springPic from './avatars/spring.jpg'
 
 const LANGUAGES = {
     angular: {
         title: 'Angular',
         picture: angularPic,
-        website: '',
+        website: 'https://angular.io/',
     },
     aurelia: {
         title: 'Aurelia',
         picture: aureliaPic,
-        website: '',
+        website: 'https://aurelia.io/',
     },
     dialogflow: {
         title: 'Dialogflow',
         picture: dialogflowPic,
-        website: '',
+        website: 'https://dialogflow.com/',
     },
     java: {
         title: 'Java',
         picture: javaPic,
-        website: '',
+        website: 'https://www.java.com/',
+    },
+    jquery: {
+        title: 'jQuery',
+        picture: jqueryPic,
+        website: 'https://jquery.com/',
     },
     node: {
         title: 'Node.js',
         picture: nodePic,
-        website: '',
+        website: 'https://nodejs.org/',
     },
     python: {
         title: 'Python',
         picture: pythonPic,
-        website: '',
-    },
-    jquery: {
-        title: 'jQuery',
-        picture: null,
-        website: '',
+        website: 'https://www.python.org/',
     },
     spring: {
         title: 'Spring',
-        picture: null,
-        website: '',
+        picture: springPic,
+        website: 'https://spring.io/',
     }
 };
 
@@ -64,12 +66,20 @@ const EXPERIENCES = [
         period: { begin: 'février 2018', end: 'juillet 2018'},
         languages: [angular, node, java, spring],
         description: 'Développement d\'un chatbot pour les candidats et les collaborateurs de SII Bordeaux. Utilisation de l\'outil Dialogflow',
+        website: {
+            title: 'Groupe SII',
+            href: 'http://www.groupe-sii.com/fr',
+        },
     },{
         title: 'digitalQuizz',
         context: 'Stage de seconde année d\'école d\'ingénieur',
         period: { begin: 'mai 2017', end: 'septembre 2017'},
         languages: [aurelia, jquery, java],
         description: 'Stage de 3 mois dans la société Multimédia SOLUTIONS à Cestas. Développement d\'une application web de questionnaires dématérialisés.',
+        website: {
+            title: 'Multimédia SOLUTIONS',
+            href: 'https://www.lug.com/',
+        },
     },
 ];
 
