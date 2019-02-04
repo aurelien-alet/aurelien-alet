@@ -4,6 +4,7 @@ import 'typeface-roboto';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Header from './header/header';
 import ExperiencesList from './experiences/experiences';
+import SchoolsList from './learning/learning';
 
 const App = () => {
     return(
@@ -11,6 +12,7 @@ const App = () => {
             <CssBaseline />
             <Header />
             <ExperiencesList />
+            <SchoolsList />
         </React.Fragment>
     );
 }

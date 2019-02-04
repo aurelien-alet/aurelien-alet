@@ -8,8 +8,7 @@ import EXPERIENCES from './data'
 
 const styles = theme => ({
     paper: {
-        width: 400,
-        maxWidth: '100%',
+        maxWidth: 400,
         padding: 2*theme.spacing.unit,
         marginTop: 2*theme.spacing.unit,
     },
@@ -98,7 +97,7 @@ const FooterButton = props => {
     const {website: {title: content, href}} = props;
     return(
         <Grid container justify='center'>
-            <Button variant="contained" href={href} >
+            <Button color='primary' href={href} >
                 {content}
             </Button>
         </Grid>
@@ -144,7 +143,9 @@ const ExperiencesList = props => {
                 Expériences professionnelles
             </Typography>
             <Divider />
-            {experiences}
+            <Grid container alignItems='center' direction='column'>
+                {experiences}
+            </Grid>
         </div>
     );
 };
