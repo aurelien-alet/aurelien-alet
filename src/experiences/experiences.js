@@ -10,7 +10,7 @@ const styles = theme => ({
     paper: {
         maxWidth: 400,
         padding: 2*theme.spacing.unit,
-        marginTop: 2*theme.spacing.unit,
+        height: '100%',
     },
     experiences: {
         padding: 3*theme.spacing.unit,
@@ -31,7 +31,10 @@ const styles = theme => ({
     },
     content: {
         marginBottom: 2.5*theme.spacing.unit,
-    }
+    },
+    divider: {
+        marginBottom: 2*theme.spacing.unit,
+    },
 });
 
 const Header = props => {
@@ -125,16 +128,18 @@ const ExperiencesList = props => {
     const experiences = EXPERIENCES.map( experience =>{
         const { languages, title, context, period, description, website } = experience;
         return(
-            <Experience 
-                languages={languages}
-                title={title}
-                context={context}
-                period={period}
-                description={description}
-                website={website}
-                classes={classes}
-                key={title}
-            />
+            <Grid item key={title}>
+                <Experience 
+                    languages={languages}
+                    title={title}
+                    context={context}
+                    period={period}
+                    description={description}
+                    website={website}
+                    classes={classes}
+                    key={title}
+                />
+            </Grid>
         );
     });
     return(
@@ -142,8 +147,8 @@ const ExperiencesList = props => {
             <Typography variant='h4' gutterBottom>
                 Expériences professionnelles
             </Typography>
-            <Divider />
-            <Grid container alignItems='center' direction='column'>
+            <Divider className={classes.divider}/>
+            <Grid container justify='center' direction='row' alignItems='stretch' spacing={16}>
                 {experiences}
             </Grid>
         </div>

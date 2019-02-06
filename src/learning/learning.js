@@ -4,18 +4,16 @@ import { withStyles } from '@material-ui/core/styles';
 import { Paper, Avatar, Grid, Typography, Divider, Button } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { CalendarToday } from '@material-ui/icons';
-import DATA from './data'
+import DATA from './data';
 
 const styles = theme => ({
     largePaper: {
         maxWidth: 400,
         padding: 2*theme.spacing.unit,
-        marginTop: 2*theme.spacing.unit,
     },
     shortPaper: {
         maxWidth: 250,
         padding: 2*theme.spacing.unit,
-        marginTop: 2*theme.spacing.unit,
     },
     schools: {
         padding: 3*theme.spacing.unit,
@@ -26,6 +24,9 @@ const styles = theme => ({
     },
     image: {
         maxWidth: '100%',
+    },
+    divider: {
+        marginBottom: 2*theme.spacing.unit,
     },
 });
 
@@ -147,16 +148,17 @@ const SchoolsList = props => {
     const schools = DATA.SCHOOLS.map( school =>{
         const { image, title, period, description, city, website, } = school;
         return(
-            <School 
-                image={image}
-                title={title}
-                period={period}
-                description={description}
-                city={city}
-                website={website}
-                key={title}
-                classes={classes}
-            />
+            <Grid item key={title} >
+                <School 
+                    image={image}
+                    title={title}
+                    period={period}
+                    description={description}
+                    city={city}
+                    website={website}
+                    classes={classes}
+                />            
+            </Grid>
         );
     });
     return(
@@ -164,8 +166,8 @@ const SchoolsList = props => {
             <Typography variant='h4' gutterBottom>
                 Formation
             </Typography>
-            <Divider />
-            <Grid container justify='center' direction='row-reverse' alignItems='center' spacing={50}>
+            <Divider className={classes.divider}/>
+            <Grid container justify='center' direction='row' alignItems='center' spacing={16} >
                 {schools}
             </Grid>
         </div>

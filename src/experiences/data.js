@@ -1,11 +1,11 @@
-import angularPic from './avatars/angular.png';
-import aureliaPic from './avatars/aurelia.png';
-import dialogflowPic from './avatars/dialogflow.jpg';
-import javaPic from './avatars/java.png';
-import jqueryPic from './avatars/jquery.jpg'
-import nodePic from './avatars/node.png';
-import pythonPic from './avatars/python.png';
-import springPic from './avatars/spring.jpg'
+import angularPic from '../img/languages_icons/angular.png';
+import aureliaPic from '../img/languages_icons/aurelia.png';
+import dialogflowPic from '../img/languages_icons/dialogflow.jpg';
+import javaPic from '../img/languages_icons/java.png';
+import jqueryPic from '../img/languages_icons/jquery.jpg'
+import nodePic from '../img/languages_icons/node.png';
+import pythonPic from '../img/languages_icons/python.png';
+import springPic from '../img/languages_icons/spring.jpg';
 
 const LANGUAGES = {
     angular: {
