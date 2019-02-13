@@ -6,6 +6,92 @@ import lispPic from '../img/languages_icons/lisp.png';
 import mongoPic from '../img/languages_icons/mongo.png';
 import cassandraPic from '../img/languages_icons/cassandra.png';
 import mysqlPic from '../img/languages_icons/mysql.png';
+import javascriptPic from '../img/languages_icons/javascript.png';
+import pythonPic from '../img/languages_icons/python.png';
+import angularPic from '../img/languages_icons/angular.png';
+import reactPic from '../img/languages_icons/react.png';
+import nodePic from '../img/languages_icons/node.png';
+import djangoPic from '../img/languages_icons/django.png';
+import numpyPic from '../img/languages_icons/numpy.png';
+
+
+const FRONT_END_SKILLS = {
+	title: 'Front-End',
+	principalLanguage: {
+		title: 'JavaScript',
+		website: '',
+		picture: javascriptPic
+	},
+	libraries: [
+		{
+			title: 'Angular',
+			website: '',
+			picture: angularPic,
+			projectNumber: {
+				school: 0,
+				work: 2,
+			},
+		},
+		{
+			title: 'React',
+			website: '',
+			picture: reactPic,
+			projectNumber: {
+				school: 0,
+				work: 0,
+			},
+		},
+		{
+			title: 'Node.js',
+			website: '',
+			picture: nodePic,
+			projectNumber: {
+				school: 0,
+				work: 1,
+			},
+		},
+	],
+	projectNumber: {
+		school: 0,
+		work: 3,
+		personnal: 1,
+	},
+};
+
+const BACK_END_SKILLS = {
+	title: 'Back-End',
+	principalLanguage: {
+		title: 'Python',
+		website: '',
+		picture: pythonPic
+	},
+	libraries: [
+		{
+			title: 'Django',
+			website: '',
+			picture: djangoPic,
+			projectNumber: {
+				school: 0,
+				work: 1,
+			},
+		},
+		{
+			title: 'Numpy',
+			website: '',
+			picture: numpyPic,
+			projectNumber: {
+				school: 0,
+				work: 0,
+			},
+		},
+	],
+	projectNumber: {
+		school: 2,
+		work: 1,
+		personnal: 0,
+	},
+};
+
 
 const SECOND_LANGUAGES = [
     {
@@ -14,7 +100,7 @@ const SECOND_LANGUAGES = [
         website: 'https://www.java.com/',
 		projectNumber: {
 			school: 4,
-			work: 0,
+			work: 1,
 		},
     },
 	{
@@ -85,6 +171,6 @@ const DATABASES_SKILLS = [
     },
 ]
 
-export default { SECOND_LANGUAGES, DATABASES_SKILLS };
+export default { FRONT_END_SKILLS, BACK_END_SKILLS, SECOND_LANGUAGES, DATABASES_SKILLS };
 
 

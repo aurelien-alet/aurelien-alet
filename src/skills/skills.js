@@ -5,6 +5,12 @@ import { Paper, Avatar, Grid, Typography, Divider, Button, Tooltip } from '@mate
 import { grey } from '@material-ui/core/colors';
 import { CalendarToday } from '@material-ui/icons';
 import DATA from './data';
+import javascriptPic from '../img/languages_icons/javascript.png';
+import pythonPic from '../img/languages_icons/python.png';
+
+const projectLabelGranting = (projectNumber, projectContext) => {
+	return (projectNumber>1) ? ' projets '+projectContext+'s' : ' projet '+projectContext;
+}
 
 const styles = theme => ({
 	divider: {
@@ -20,6 +26,9 @@ const styles = theme => ({
             backgroundColor: grey[200],
         },
     },
+	paper: {
+		padding: 2*theme.spacing.unit,
+	},
 });
 
 const Title = props => {
@@ -33,8 +42,8 @@ const Title = props => {
 
 const AvatarTooltip = props => {
 	const { title, schoolProjectsNb, workProjectsNb } = props;
-	const labelSchool = (schoolProjectsNb>1) ? ' projets universitaires' : ' projet universitaire';
-	const labelWork = (schoolProjectsNb>1) ? ' projets professionnels' : ' projet professionnel';
+	const labelSchool = projectLabelGranting(schoolProjectsNb, 'universitaire');
+	const labelWork = projectLabelGranting(workProjectsNb, 'professionnel');
 	return (
 		<div>
 			<Title title={title} variant='subtitle2' />
@@ -106,7 +115,100 @@ const DatabaseSkillsList = props => {
 			{dbSkills}
 		</Grid>
 	);
-}
+};
+
+const LibrariesAvatars = props => {
+	const {libraries, avatarClass} = props;
+	const avatars = libraries.map( library => {
+		const {title, website, picture, projectNumber} = library;		
+		return(
+			<LanguageAvatar 
+				title={title}
+				website={website}
+				picture={picture}
+				projectNumber={projectNumber}
+			/>
+		);
+	});	
+	return(
+		<Grid container>
+			{avatars}
+		</Grid>
+	);
+};
+
+const LanguagePaper = props => {
+	const { name, picture, projectNumber, avatarClass, paperClass } = props;
+	const { work, school, personnal } = projectNumber;
+	return(
+		<Paper className={paperClass}>
+			<Grid container>
+				<Grid item>
+					<Avatar alt={name} src={picture} className={avatarClass}/>
+				</Grid>
+				<Grid item >
+					<Grid container alignItems='center' direction='column'>
+						<Grid item xs={12}>
+							<Title title={name} variant='h6' />
+						</Grid>
+						<Grid item xs={12} sm={3}>
+							{work!==0 &&
+								<Title title={work + projectLabelGranting(work, 'professionel')} variant='caption' />
+							}
+						</Grid>
+						<Grid item xs={12} sm={3}>
+							{personnal!==0 &&
+								<Title title={personnal + projectLabelGranting(personnal, 'personnel')} variant='caption' />
+							}
+						</Grid>
+						<Grid item xs={12} sm={3}>
+							{school!==0 &&
+								<Title title={school + projectLabelGranting(school, 'universitaire')} variant='caption' />
+							}
+						</Grid>						
+					</Grid>
+				</Grid>			
+			</Grid>
+		</Paper>
+	);
+};
+
+const MainSkill = props => {
+	const {frontSkills, avatarClass, paperClass} = props;
+	const {title, principalLanguage, libraries, projectNumber} = frontSkills;
+	const {title: languageName, picture: languagePic} = principalLanguage;
+	return(
+		<Paper className={paperClass}>
+			<Grid container alignItems='center' direction='column'>
+				<Grid item>				
+					<Title title={title} variant='h5' />
+				</Grid>
+				<Grid item>		
+					<LanguagePaper 
+						name={languageName} 
+						picture={languagePic}
+						projectNumber={projectNumber}
+						libraries={libraries}
+						avatarClass={avatarClass} 
+						paperClass={paperClass}/>
+				</Grid>
+				<Grid item>
+					<LibrariesAvatars libraries={libraries} />
+				</Grid>
+			</Grid>		
+		</Paper>
+	);
+};
+
+const FirstSkills = props => {
+	const {classes} = props;
+	return(
+		<Grid container justify='space-evenly'>
+			<MainSkill frontSkills={DATA.FRONT_END_SKILLS} avatarClass={classes.avatar} paperClass={classes.paper}/>
+			<MainSkill frontSkills={DATA.BACK_END_SKILLS} avatarClass={classes.avatar} paperClass={classes.paper}/>
+		</Grid>
+	);
+};
 
 const Skills = props => {
     const {classes} = props;
@@ -116,6 +218,7 @@ const Skills = props => {
                 Compétences
             </Typography>
             <Divider className={classes.divider}/>
+			<FirstSkills classes={classes}/>			
 			<SecondSkillsList classes={classes}/> 
 			<DatabaseSkillsList classes={classes}/>        
 		</div>
