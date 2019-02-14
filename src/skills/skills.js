@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Paper, Avatar, Grid, Typography, Divider, Button, Tooltip } from '@material-ui/core';
+import { Paper, Avatar, Grid, Typography, Divider, Button, Tooltip, Chip } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { CalendarToday } from '@material-ui/icons';
 import DATA from './data';
@@ -28,13 +28,18 @@ const styles = theme => ({
     },
 	paper: {
 		padding: 2*theme.spacing.unit,
+		width: '100%',
+		maxWidth: 450,
+	},
+	chip: {
+		margin: theme.spacing.unit,
 	},
 });
 
 const Title = props => {
-    const { title, variant } = props;
+    const { title, variant, align } = props;
     return(
-        <Typography variant={variant}>
+        <Typography variant={variant} align={align}>
             {title}
         </Typography>
     );
@@ -146,26 +151,26 @@ const LanguagePaper = props => {
 				<Grid item>
 					<Avatar alt={name} src={picture} className={avatarClass}/>
 				</Grid>
-				<Grid item >
-					<Grid container alignItems='center' direction='column'>
-						<Grid item xs={12}>
+				<Grid item>
+					<Grid container direction='row' justify='space-evenly'>
+						<Grid item xs={12} justify='center' container>
 							<Title title={name} variant='h6' />
 						</Grid>
-						<Grid item xs={12} sm={3}>
-							{work!==0 &&
-								<Title title={work + projectLabelGranting(work, 'professionel')} variant='caption' />
-							}
-						</Grid>
-						<Grid item xs={12} sm={3}>
-							{personnal!==0 &&
-								<Title title={personnal + projectLabelGranting(personnal, 'personnel')} variant='caption' />
-							}
-						</Grid>
-						<Grid item xs={12} sm={3}>
-							{school!==0 &&
-								<Title title={school + projectLabelGranting(school, 'universitaire')} variant='caption' />
-							}
-						</Grid>						
+						{work!==0 &&
+							<Grid item xs={3} justify='center' container>
+								<Title title={work + projectLabelGranting(work, 'professionel')} variant='caption' align='center'/>
+							</Grid>
+						}
+						{personnal!==0 &&
+							<Grid item xs={3} justify='center' container>
+								<Title title={personnal + projectLabelGranting(personnal, 'personnel')} variant='caption' align='center'/>
+							</Grid>
+						}
+						{school!==0 &&
+							<Grid item xs={3} justify='center' container>
+								<Title title={school + projectLabelGranting(school, 'universitaire')} variant='caption' align='center'/>
+							</Grid>						
+						}
 					</Grid>
 				</Grid>			
 			</Grid>
@@ -183,14 +188,14 @@ const MainSkill = props => {
 				<Grid item>				
 					<Title title={title} variant='h5' />
 				</Grid>
-				<Grid item>		
+				<Grid item  >		
 					<LanguagePaper 
 						name={languageName} 
 						picture={languagePic}
 						projectNumber={projectNumber}
 						libraries={libraries}
 						avatarClass={avatarClass} 
-						paperClass={paperClass}/>
+						paperClass={paperClass} />
 				</Grid>
 				<Grid item>
 					<LibrariesAvatars libraries={libraries} />
@@ -204,8 +209,8 @@ const FirstSkills = props => {
 	const {classes} = props;
 	return(
 		<Grid container justify='space-evenly'>
-			<MainSkill frontSkills={DATA.FRONT_END_SKILLS} avatarClass={classes.avatar} paperClass={classes.paper}/>
-			<MainSkill frontSkills={DATA.BACK_END_SKILLS} avatarClass={classes.avatar} paperClass={classes.paper}/>
+			<MainSkill frontSkills={DATA.FRONT_END_SKILLS} avatarClass={classes.avatar} paperClass={classes.paper} />
+			<MainSkill frontSkills={DATA.BACK_END_SKILLS} avatarClass={classes.avatar} paperClass={classes.paper} />
 		</Grid>
 	);
 };
@@ -220,7 +225,8 @@ const Skills = props => {
             <Divider className={classes.divider}/>
 			<FirstSkills classes={classes}/>			
 			<SecondSkillsList classes={classes}/> 
-			<DatabaseSkillsList classes={classes}/>        
+			<DatabaseSkillsList classes={classes}/>
+			<Chip label="Basic Chip" className={classes.chip} color='primary'/>    
 		</div>
     );
 };
