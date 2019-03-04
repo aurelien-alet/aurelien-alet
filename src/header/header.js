@@ -50,12 +50,13 @@ const Titles = props => {
 };
 
 const Header = props => {
-    const {classes} = props;
+    const {classes, schoolsListTop} = props;
     return(
         <Paper className={classes.paper} >
             <Grid container justify='space-evenly' alignItems='center' className={classes.gridContainer}>
                 <ProfilePicture avatarClass={classes.avatar} />
                 <Titles titlesClass={classes.titles} />
+				<div>{schoolsListTop}</div>
             </Grid>
         </Paper>
     );

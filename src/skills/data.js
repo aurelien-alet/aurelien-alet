@@ -30,6 +30,7 @@ const FRONT_END_SKILLS = {
 			projectNumber: {
 				school: 0,
 				work: 2,
+				personnal: 0,
 			},
 		},
 		{
@@ -39,6 +40,7 @@ const FRONT_END_SKILLS = {
 			projectNumber: {
 				school: 0,
 				work: 0,
+				personnal: 1,
 			},
 		},
 		{
@@ -48,6 +50,7 @@ const FRONT_END_SKILLS = {
 			projectNumber: {
 				school: 0,
 				work: 1,
+				personnal: 0,
 			},
 		},
 	],
@@ -73,6 +76,7 @@ const BACK_END_SKILLS = {
 			projectNumber: {
 				school: 0,
 				work: 1,
+				personnal: 0,
 			},
 		},
 		{
@@ -82,6 +86,7 @@ const BACK_END_SKILLS = {
 			projectNumber: {
 				school: 0,
 				work: 0,
+				personnal: 0,
 			},
 		},
 	],
