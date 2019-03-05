@@ -5,6 +5,7 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
 import profilePicture from './profile-picture.png';
 
 const styles = theme => ({
@@ -24,7 +25,32 @@ const styles = theme => ({
     gridContainer: {
         height: '100%',
     },
+	button: {
+		textTransform: 'none',
+		margin: theme.spacing.unit/2,
+	}
 });
+
+class Menu extends React.Component {
+
+	constructor(props) {
+		super(props);
+		this.buttonClass = props.buttonClass
+	}
+
+
+	render() {
+		return(
+			<div>
+				<Button onClick={(e) => this.props.handleMenuClick(e, 'skills')} className={this.buttonClass} variant='outlined'>Compétences</Button>
+				<Button onClick={(e) => this.props.handleMenuClick(e, 'experiences')} className={this.buttonClass} variant='outlined'>Expériences</Button>
+				<Button onClick={(e) => this.props.handleMenuClick(e, 'schools')} className={this.buttonClass} variant='outlined'>Formation</Button>
+				<Button onClick={(e) => this.props.handleMenuClick(e, 'contact')} className={this.buttonClass} variant='outlined'>Me contacter</Button>
+			</div>
+		);
+	}	
+	
+}
 
 const ProfilePicture = props => {
     const {avatarClass} = props;
@@ -50,13 +76,22 @@ const Titles = props => {
 };
 
 const Header = props => {
-    const {classes, schoolsListTop} = props;
+    const {classes, handleMenuClick} = props;
     return(
         <Paper className={classes.paper} >
             <Grid container justify='space-evenly' alignItems='center' className={classes.gridContainer}>
-                <ProfilePicture avatarClass={classes.avatar} />
-                <Titles titlesClass={classes.titles} />
-				<div>{schoolsListTop}</div>
+				<Grid item>
+                	<ProfilePicture avatarClass={classes.avatar} />
+				</Grid>
+				<Grid item>				
+					<Grid container direction='column' alignItems='center'>
+                		<Titles titlesClass={classes.titles} />				
+						<Menu 
+							handleMenuClick={handleMenuClick}
+							buttonClass={classes.button}
+						/>
+					</Grid>
+				</Grid>
             </Grid>
         </Paper>
     );

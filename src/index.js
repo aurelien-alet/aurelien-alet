@@ -7,48 +7,59 @@ import ExperiencesList from './experiences/experiences';
 import SchoolsList from './learning/learning';
 import Skills from './skills/skills';
 import Footer from './footer/footer';
+import './index.css'
 
 class App extends React.Component {
 	
 	constructor(props) {
 		super(props);
-		this.state = {
-			schoolsListTop: 0,
-		};
+		this.handleMenuClick = this.handleMenuClick.bind(this);
 	}
 
-	componentDidMount() {
-
-		const tmp = ReactDOM.findDOMNode(this.refs.SchoolsListRef).getBoundingClientRect();
-		console.log(tmp);
-	
-		const { top:schoolsListTop } = ReactDOM.findDOMNode(this.refs.SchoolsListRef).getBoundingClientRect();
-		this.setState({
-			schoolsListTop: schoolsListTop,
-		});		
-		console.log(schoolsListTop);
-		
+	handleMenuClick(event, section) {
+		let scrollPosition = 0;
+		console.log(window.scrollY)
+		switch(section) {
+			case 'skills':
+				console.log(ReactDOM.findDOMNode(this.refs.SkillsRef).getBoundingClientRect());
+				scrollPosition = ReactDOM.findDOMNode(this.refs.SkillsRef).getBoundingClientRect().top;
+				break;
+			case 'experiences':
+				scrollPosition = ReactDOM.findDOMNode(this.refs.ExperiencesListRef).getBoundingClientRect().top;
+				break;
+			case 'schools':
+				scrollPosition = ReactDOM.findDOMNode(this.refs.SchoolsListRef).getBoundingClientRect().top;
+				break;
+			case 'contact':
+				scrollPosition = ReactDOM.findDOMNode(this.refs.FooterRef).getBoundingClientRect().top;
+				break;		
+		}
+		console.log(scrollPosition);
+		window.scroll(0, window.scrollY + scrollPosition);
 	}
 
 	render() {
-		const { schoolsListTop } = this.state;
 		return(
     	    <React.Fragment >
     	        <CssBaseline />
     	        <Header 
-					schoolsListTop={schoolsListTop}	
+					handleMenuClick={this.handleMenuClick}
 				/>
-				<Skills />
-    	        <ExperiencesList />
+				<Skills ref='SkillsRef'/>
+    	        <ExperiencesList ref='ExperiencesListRef'/>
     	        <SchoolsList ref='SchoolsListRef'/>
-				<Footer />
+				<Footer ref='FooterRef'/>
     	    </React.Fragment>
     	);
 	}
 }
 
+const scrollStyle = {
+	scrollBehavior: 'smooth',
+}
+
 ReactDOM.render(
-    <div>
+    <div style={scrollStyle}>
         <App />
     </div>,
     document.getElementById('root')
