@@ -7,7 +7,15 @@ import ExperiencesList from './experiences/experiences';
 import SchoolsList from './learning/learning';
 import Skills from './skills/skills';
 import Footer from './footer/footer';
-import './index.css'
+import './index.css';
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+import { blue } from '@material-ui/core/colors'
+
+const theme = createMuiTheme({
+	palette: {
+    	primary: blue,
+	},
+});
 
 class App extends React.Component {
 	
@@ -59,9 +67,9 @@ const scrollStyle = {
 }
 
 ReactDOM.render(
-    <div style={scrollStyle}>
-        <App />
-    </div>,
+	<MuiThemeProvider theme={theme}>
+		<App />
+	</MuiThemeProvider>,
     document.getElementById('root')
 );
 

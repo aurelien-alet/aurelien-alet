@@ -7,6 +7,8 @@ import Avatar from '@material-ui/core/Avatar';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import profilePicture from './profile-picture.png';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+import grey from '@material-ui/core/colors/grey';
 
 const styles = theme => ({
     avatar: {
@@ -21,32 +23,56 @@ const styles = theme => ({
     },
     paper: {
         height: window.innerHeight,
+		backgroundColor: 'black',
     },
     gridContainer: {
         height: '100%',
     },
 	button: {
 		textTransform: 'none',
-		margin: theme.spacing.unit/2,
+		width: '100%',
+		// color: 'white',
+	},
+	whiteText: {
+		color: 'white',
 	}
 });
 
+/**
+ * Contains the menu items which, when clicked, scroll to the
+ * corresponding page section
+ */
 class Menu extends React.Component {
 
+	/**
+	 * Constructor of the component
+	 * @param {props} props passed from the parent component
+	 */
 	constructor(props) {
 		super(props);
 		this.buttonClass = props.buttonClass
 	}
 
-
+	/**
+	 * Method used to render the component HTML
+	 * @return {JSXobject} the html to render
+	 */
 	render() {
 		return(
-			<div>
-				<Button onClick={(e) => this.props.handleMenuClick(e, 'skills')} className={this.buttonClass} variant='outlined'>Compétences</Button>
-				<Button onClick={(e) => this.props.handleMenuClick(e, 'experiences')} className={this.buttonClass} variant='outlined'>Expériences</Button>
-				<Button onClick={(e) => this.props.handleMenuClick(e, 'schools')} className={this.buttonClass} variant='outlined'>Formation</Button>
-				<Button onClick={(e) => this.props.handleMenuClick(e, 'contact')} className={this.buttonClass} variant='outlined'>Me contacter</Button>
-			</div>
+			<Grid container spacing={8} alignItems='center' justify='center'>
+				<Grid item sm={3} xs={5}>
+					<Button onClick={(e) => this.props.handleMenuClick(e, 'skills')} className={this.buttonClass} variant='outlined' color='primary'>Compétences</Button>
+				</Grid>
+				<Grid item sm={3} xs={5}>
+					<Button onClick={(e) => this.props.handleMenuClick(e, 'experiences')} className={this.buttonClass} variant='outlined' color='primary'>Expériences</Button>
+				</Grid>
+				<Grid item sm={3} xs={5}>
+					<Button onClick={(e) => this.props.handleMenuClick(e, 'schools')} className={this.buttonClass} variant='outlined' color='primary'>Formation</Button>
+				</Grid>
+				<Grid item sm={3} xs={5}>
+					<Button onClick={(e) => this.props.handleMenuClick(e, 'contact')} className={this.buttonClass} variant='outlined' color='primary'>Me contacter</Button>
+				</Grid>				
+			</Grid>
 		);
 	}	
 	
@@ -62,13 +88,13 @@ const ProfilePicture = props => {
 };
 
 const Titles = props => {
-    const {titlesClass} = props;
+    const {titlesClass, whiteTextClass} = props;
     return(
         <Grid className={titlesClass} item>
-            <Typography variant='h2' align='center' gutterBottom>
+            <Typography variant='h2' className={whiteTextClass} align='center' gutterBottom>
                 Aurélien Alet
             </Typography>
-            <Typography variant='subtitle1' align='center' gutterBottom>
+            <Typography variant='subtitle1' className={whiteTextClass} align='center' gutterBottom>
                 Ingénieur en développement web pour la société SII Bordeaux
             </Typography>
         </Grid>
@@ -85,7 +111,7 @@ const Header = props => {
 				</Grid>
 				<Grid item>				
 					<Grid container direction='column' alignItems='center'>
-                		<Titles titlesClass={classes.titles} />				
+                		<Titles titlesClass={classes.titles} whiteTextClass={classes.whiteText} />				
 						<Menu 
 							handleMenuClick={handleMenuClick}
 							buttonClass={classes.button}

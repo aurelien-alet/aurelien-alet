@@ -18,6 +18,9 @@ const styles = theme => ({
 		textTransform: 'none',
 		fontSize: theme.typography.h6.fontSize,
 	},
+	paper: {
+		backgroundColor: 'black',
+	}
 });
 
 const ContactButton = props => {
@@ -35,7 +38,7 @@ const ContactButton = props => {
 const Contact = props => {
 	const { classes } = props;
 	return(
-		<Paper >
+		<Paper className={classes.paper}>
 			<Grid container justify='space-evenly' alignItems='center' className={classes.footer}>
 				<Grid item>
 					<ContactButton 
@@ -61,7 +64,7 @@ const Contact = props => {
 };
 
 const Footer = props => {
-    const {classes} = props;;
+    const {classes} = props;
     return(
         <div >
 			<Contact classes={classes} />
