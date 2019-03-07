@@ -10,20 +10,39 @@ import profilePicture from './profile-picture.png';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import grey from '@material-ui/core/colors/grey';
 
-const styles = theme => ({
+let windowHeight = window.innerHeight;
+
+let styles = theme => ({
     avatar: {
-        width: 300,
-        height: 300,
+		[theme.breakpoints.down('sm')]: {
+			width: 200,
+        	height: 200,
+		},
+		[theme.breakpoints.up('sm')]: {
+        	width: 300,
+        	height: 300,
+		},
+		[theme.breakpoints.up('xl')]: {
+        	width: 400,
+        	height: 400,
+		},
     }, 
+
     titles: {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: 3*theme.spacing.unit,
+        paddingTop: 1*theme.spacing.unit,
+		paddingLeft: 3*theme.spacing.unit,
+		paddingRight: 3*theme.spacing.unit,
+		marginBottom: 2*theme.spacing.unit,
     },
     paper: {
-        height: window.innerHeight,
+        //height: window.innerHeight,
+		//height: windowHeight,
+		minHeight: 530,
 		backgroundColor: 'black',
+		padding: 1*theme.spacing.unit,
     },
     gridContainer: {
         height: '100%',
@@ -101,30 +120,64 @@ const Titles = props => {
     );
 };
 
-const Header = props => {
-    const {classes, handleMenuClick} = props;
-    return(
-        <Paper className={classes.paper} >
-            <Grid container justify='space-evenly' alignItems='center' className={classes.gridContainer}>
-				<Grid item>
-                	<ProfilePicture avatarClass={classes.avatar} />
-				</Grid>
-				<Grid item>				
-					<Grid container direction='column' alignItems='center'>
-                		<Titles titlesClass={classes.titles} whiteTextClass={classes.whiteText} />				
-						<Menu 
-							handleMenuClick={handleMenuClick}
-							buttonClass={classes.button}
-						/>
+class Header extends  React.Component {
+	
+	constructor(props) {
+		super(props);
+		this.state = {
+			windowHeight: window.innerHeight,
+		};
+		console.log(this.state);
+		this.updateDimensions = this.updateDimensions.bind(this);
+	}
+    
+	updateDimensions() {
+		this.setState({
+			windowHeight: window.innerHeight,
+		});
+		console.log('ok');
+	}
+
+	componentWillMount() {
+        this.updateDimensions();
+    }
+
+    componentDidMount() {
+        window.addEventListener("resize", this.updateDimensions);
+    }
+
+	render() {
+		const classes = this.props.classes;
+		const handleMenuClick = this.props.handleMenuClick;
+		const windowHeight = this.state.windowHeight;
+    	return(
+        	<Paper className={classes.paper} style={{height: windowHeight}}>
+        	    <Grid container justify='space-evenly' alignItems='center' className={classes.gridContainer}>
+					<Grid item>
+        	        	<ProfilePicture avatarClass={classes.avatar} />
 					</Grid>
-				</Grid>
-            </Grid>
-        </Paper>
-    );
+					<Grid item>				
+						<Grid container direction='column' alignItems='center'>
+        	        		<Titles titlesClass={classes.titles} whiteTextClass={classes.whiteText} />				
+							<Menu 
+								handleMenuClick={handleMenuClick}
+								buttonClass={classes.button}
+							/>
+						</Grid>
+					</Grid>
+        	    </Grid>
+        	</Paper>
+    	);
+	}
 };
 
 Header.propTypes = {
     classes: PropTypes.object.isRequired,
 };
+
+/*window.onresize = () => {
+	console.log('resize');
+	windowHeight = window.innerHeight;
+}*/
 
 export default withStyles(styles)(Header);

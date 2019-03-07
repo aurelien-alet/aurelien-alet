@@ -143,9 +143,32 @@ const School = props => {
     );
 }
 
+const renderSchoolList = (schoolList, classes) => {
+	return schoolList.map( school =>{
+        const { image, title, period, description, city, website } = school;
+        return(
+            <Grid item key={title} >
+                <School 
+                    image={image}
+                    title={title}
+                    period={period}
+                    description={description}
+                    city={city}
+                    website={website}
+                    classes={classes}
+                />            
+            </Grid>
+        );
+	});
+}
+
 const SchoolsList = props => {
     const {classes} = props;
-    const schools = DATA.SCHOOLS.map( school =>{
+	const schoolsWithImagesFilter = DATA.SCHOOLS.filter( school => school.image );
+	const schoolsWithImages = renderSchoolList(schoolsWithImagesFilter, classes);	
+	const schoolsWithoutImageFilter = DATA.SCHOOLS.filter( school => !school.image );
+	const schoolsWithoutImage = renderSchoolList(schoolsWithoutImageFilter, classes);
+    /*const schools = DATA.SCHOOLS.map( school =>{
         const { image, title, period, description, city, website, } = school;
         return(
             <Grid item key={title} >
@@ -160,7 +183,7 @@ const SchoolsList = props => {
                 />            
             </Grid>
         );
-    });
+    });*/
     return(
         <div className={classes.schools}>
             <Typography variant='h4' gutterBottom>
@@ -168,7 +191,12 @@ const SchoolsList = props => {
             </Typography>
             <Divider className={classes.divider}/>
             <Grid container justify='center' direction='row' alignItems='center' spacing={16} >
-                {schools}
+                {schoolsWithImages}
+				<Grid item>
+				<Grid container justify='center' direction='row' alignItems='center' spacing={16} >
+					{schoolsWithoutImage}
+				</Grid>
+				</Grid>
             </Grid>
         </div>
     );

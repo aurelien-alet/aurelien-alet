@@ -52,9 +52,9 @@ const styles = theme => ({
 });
 
 const Title = props => {
-    const { title, variant, align } = props;
+    const { title, variant, align, color } = props;
     return(
-        <Typography variant={variant} align={align}>
+        <Typography variant={variant} align={align} style={{color: color}}>
             {title}
         </Typography>
     );
@@ -67,22 +67,22 @@ const AvatarTooltip = props => {
 	const labelPersonnal = projectLabelGranting(personnalProjectsNb, 'personnel'); 
 	return (
 		<div>
-			<Title title={title} variant='subtitle2' />
+			<Title title={title} variant='subtitle2' color='white'/>
 			{ workProjectsNb > 0 &&
-				<Title title={workProjectsNb + labelWork} variant='caption' />
+				<Title title={workProjectsNb + labelWork} variant='caption' color='white' />
 			}
 			{ personnalProjectsNb > 0 &&
-				<Title title={personnalProjectsNb + labelPersonnal} variant='caption' />
+				<Title title={personnalProjectsNb + labelPersonnal} variant='caption' color='white' />
 			}
 			{ schoolProjectsNb > 0 &&
-				<Title title={schoolProjectsNb + labelSchool} variant='caption' />
+				<Title title={schoolProjectsNb + labelSchool} variant='caption' color='white' />
 			}
 		</div>
 	);
 };
 
 const LanguageAvatarBis = props => {
-	const { title, website, picture, projectNumber, avatarClass } = props;
+	const { title, website, picture, projectNumber, avatarClass} = props;
 	const tooltip = (
 		<AvatarTooltip 
 			title={title}
@@ -96,7 +96,7 @@ const LanguageAvatarBis = props => {
 };
 
 const LanguageAvatar = props => {
-	const { title, website, picture, projectNumber, avatarClass } = props;
+	const { title, website, picture, projectNumber, avatarClass} = props;
 	const tooltip = (
 		<AvatarTooltip 
 			title={title}
@@ -220,7 +220,7 @@ const LanguagePaper = props => {
 		<Paper className={languagePaperClass}>
 			<Grid container justify='center'>
 				<Grid item>
-					<Avatar alt={name} src={picture} className={avatarClass}/>
+					<Avatar alt={name} src={picture} className={avatarClass} />
 				</Grid>
 				<Grid item>
 					<Grid container direction='row' justify='space-evenly'>

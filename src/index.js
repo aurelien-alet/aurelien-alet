@@ -9,11 +9,12 @@ import Skills from './skills/skills';
 import Footer from './footer/footer';
 import './index.css';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { blue } from '@material-ui/core/colors'
+import { blue, white } from '@material-ui/core/colors'
 
 const theme = createMuiTheme({
 	palette: {
     	primary: blue,
+		
 	},
 });
 
