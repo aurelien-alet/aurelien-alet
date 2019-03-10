@@ -45,7 +45,7 @@ const styles = theme => ({
 		padding: 2*theme.spacing.unit,
 		margin: theme.spacing.unit,
 		width: '100%',
-		maxWidth: 450,
+		maxWidth: 455,
 	},
 	languagePaper: {
 		padding: 2*theme.spacing.unit,
