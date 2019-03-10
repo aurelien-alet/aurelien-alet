@@ -9,28 +9,42 @@ import Skills from './skills/skills';
 import Footer from './footer/footer';
 import './index.css';
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
-import { blue, white } from '@material-ui/core/colors'
+import { blue } from '@material-ui/core/colors'
 
+/**
+ * Object containing the theme for the website
+ */
 const theme = createMuiTheme({
 	palette: {
     	primary: blue,
-		
 	},
 });
 
+/**
+ * Main component of the app, displaying the header, the skills, the experiences, the schools
+ * and the footer
+ */
 class App extends React.Component {
 	
+	/**
+	 * Constructor of the component
+	 * @param {object} props properties passed from the parent component
+	 */
 	constructor(props) {
 		super(props);
 		this.handleMenuClick = this.handleMenuClick.bind(this);
 	}
 
+	/**
+	 * When an item is clicked on the menu, scrools the website to the section 
+	 * corresponding to the selection
+	 * @param {*} event click event 
+	 * @param {string} section section of the application to scroll to
+	 */
 	handleMenuClick(event, section) {
 		let scrollPosition = 0;
-		console.log(window.scrollY)
 		switch(section) {
 			case 'skills':
-				console.log(ReactDOM.findDOMNode(this.refs.SkillsRef).getBoundingClientRect());
 				scrollPosition = ReactDOM.findDOMNode(this.refs.SkillsRef).getBoundingClientRect().top;
 				break;
 			case 'experiences':
@@ -41,12 +55,17 @@ class App extends React.Component {
 				break;
 			case 'contact':
 				scrollPosition = ReactDOM.findDOMNode(this.refs.FooterRef).getBoundingClientRect().top;
-				break;		
+				break;	
+			default:
+				scrollPosition = 0;
+				break;	
 		}
-		console.log(scrollPosition);
 		window.scroll(0, window.scrollY + scrollPosition);
 	}
 
+	/**
+	 * Renders the webpage
+	 */
 	render() {
 		return(
     	    <React.Fragment >
@@ -61,10 +80,6 @@ class App extends React.Component {
     	    </React.Fragment>
     	);
 	}
-}
-
-const scrollStyle = {
-	scrollBehavior: 'smooth',
 }
 
 ReactDOM.render(

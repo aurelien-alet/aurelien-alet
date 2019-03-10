@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Paper, Avatar, Grid, Typography, Divider, Button } from '@material-ui/core';
+import { Paper, Avatar, Grid, Typography, Divider, Button, Tooltip } from '@material-ui/core';
 import { grey } from '@material-ui/core/colors';
 import { CalendarToday } from '@material-ui/icons';
 import EXPERIENCES from './data'
 
+/**
+ * Object containing the css properties for the experiences components
+ */
 const styles = theme => ({
     paper: {
         maxWidth: 400,
@@ -14,6 +17,8 @@ const styles = theme => ({
     },
     experiences: {
         padding: 3*theme.spacing.unit,
+		marginTop: 3*theme.spacing.unit,
+		marginBottom: 3*theme.spacing.unit,
     },
     avatar: {
         marginLeft: theme.spacing.unit,
@@ -33,19 +38,24 @@ const styles = theme => ({
         marginBottom: 2.5*theme.spacing.unit,
     },
     divider: {
-        marginBottom: 2*theme.spacing.unit,
+        marginBottom: 5*theme.spacing.unit,
     },
 });
 
+/**
+ * Displays the header of an experience card
+ * This header contains avatars with tooltips 
+ * @param {object} props properties passed from the parent component
+ */
 const Header = props => {
     const {languages, avatarClass} = props;
     const avatars = languages.map( language => {
-        const {title, website, picture} = language;
+        const {title, picture} = language;
         return(
             <Grid item key={title}>
-                <a title={title} href={website}>
-                    <Avatar alt={title} src={picture} className={avatarClass} />
-                </a>
+				<Tooltip title={title} disableTouchListener>
+                   <Avatar alt={title} src={picture} className={avatarClass} />
+				</Tooltip>
             </Grid>
         );
     });
@@ -56,6 +66,10 @@ const Header = props => {
     );
 };
 
+/**
+ * Displays a title
+ * @param {object} props properties passed from the parent component
+ */
 const Title = props => {
     const {title} = props;
     return(
@@ -65,6 +79,10 @@ const Title = props => {
     );
 };
 
+/**
+ * Displays the context, which is the grey text on each experience card
+ * @param {object} props properties passed from the parent component
+ */
 const Context = props => {
     const {context} = props;
     return(
@@ -74,6 +92,10 @@ const Context = props => {
     );
 };
 
+/**
+ * Displays the duration period of the experience on an experience card
+ * @param {object} props properties passed from the parent component
+ */
 const Date = props =>{
     const { period, dateClass, calendarClass } = props;
     return(
@@ -87,15 +109,24 @@ const Date = props =>{
     );
 }
 
+/**
+ * Gives a description of the experience on an experience card
+ * This is the main text of an experience card
+ * @param {object} props properties passed from the parent component
+ */
 const Content = props => {
     const {description, contentClass} = props;
     return(
-        <Typography variant='body1' className={contentClass} gutterBottom>
+        <Typography variant='body1' className={contentClass} gutterBottom align='justify'>
             {description}
         </Typography>
     );
 };
 
+/**
+ * If a link have to be given on an experience card, creates a button at the bottom of it
+ * @param {object} props properties passed from the parent component 
+ */
 const FooterButton = props => {
     const {website: {title: content, href}} = props;
     return(
@@ -107,6 +138,10 @@ const FooterButton = props => {
     );
 };
 
+/**
+ * Component which render an experience card
+ * @param {object} props properties passed from the parent component
+ */
 const Experience = props => {
     const {classes, languages, title, context, period, description, website} = props;
     return(
@@ -123,6 +158,11 @@ const Experience = props => {
     );
 }
 
+/**
+ * Main component for the experiences
+ * Get the data list from ./data, and displays an experience card for each data
+ * @param {object} props properties passed from the parent component
+ */
 const ExperiencesList = props => {
     const {classes} = props;
     const experiences = EXPERIENCES.map( experience =>{

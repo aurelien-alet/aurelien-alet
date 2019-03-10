@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
-import { Paper, Avatar, Grid, Typography, Divider, Button } from '@material-ui/core';
-import { grey } from '@material-ui/core/colors';
-import { CalendarToday } from '@material-ui/icons';
+import { Paper, Grid, Typography, Divider, Button } from '@material-ui/core';
 import DATA from './data';
 
+/**
+ * Object containing the css properties for the learning components
+ */
 const styles = theme => ({
     largePaper: {
         maxWidth: 400,
@@ -17,6 +18,8 @@ const styles = theme => ({
     },
     schools: {
         padding: 3*theme.spacing.unit,
+		marginTop: 3*theme.spacing.unit,
+		marginBottom: 3*theme.spacing.unit,
     },
     calendar: {
         fontSize: '1em',
@@ -26,10 +29,15 @@ const styles = theme => ({
         maxWidth: '100%',
     },
     divider: {
-        marginBottom: 2*theme.spacing.unit,
+        marginBottom: 5*theme.spacing.unit,
     },
 });
 
+/**
+ * Header for a large school card
+ * Contains a picture
+ * @param {object} props properties passed from the parent component
+ */
 const Header = props => {
     const { image: { title, picture, website }, imageClass } = props;
     return(
@@ -39,6 +47,10 @@ const Header = props => {
     );
 }
 
+/**
+ * Simply renders a title component
+ * @param {object} props properties passed from the parent component
+ */
 const Title = props => {
     const { title, variant } = props;
     return(
@@ -48,8 +60,12 @@ const Title = props => {
     );
 };
 
+/**
+ * Displays the studying period on a card school 
+ * @param {object} props properties passed from the parent component
+ */
 const Date = props =>{
-    const { period, dateClass, calendarClass } = props;
+    const { period, dateClass } = props;
     return(
         <div>
             
@@ -60,6 +76,11 @@ const Date = props =>{
     );
 }
 
+/**
+ * Displays the content of a school card
+ * Content contains the name of the school and the city where the school is located
+ * @param {object} props properties passed from the parent component
+ */
 const Content = props => {
     const { description, city } = props;
     return(
@@ -73,6 +94,10 @@ const Content = props => {
     );
 };
 
+/**
+ * For a large school card, displays a button at the bottom of it which refers the school website 
+ * @param {object} props properties passed from the parent component
+ */
 const FooterButton = props => {
     const {website: {title: content, href}} = props;
     return(
@@ -84,6 +109,11 @@ const FooterButton = props => {
     );
 };
 
+/**
+ * Displays a short school card, containing school name, formation provided, school place 
+ * and studiying period 
+ * @param {*} props 
+ */
 const ShortPaper = props => {
     const {classes, title, period, description, city, } = props;
     return (
@@ -97,6 +127,11 @@ const ShortPaper = props => {
     );
 }
 
+/**
+ * Displays a large school card, containing the same elements as short school card
+ * plus an extra picture and a website reference 
+ * @param {object} props properties passed from the parent component 
+ */
 const LargePaper = props => {
     const {classes, image, title, period, description, city, website,} = props;
     return (
@@ -110,6 +145,11 @@ const LargePaper = props => {
     )
 }
 
+/**
+ * Displays a short or large school card, depending on if the props object contans
+ * a picture or not
+ * @param {object} props properties passed from the parent component
+ */
 const School = props => {
     const {classes, image, title, period, description, city, website,} = props;
     let paper;
@@ -143,6 +183,11 @@ const School = props => {
     );
 }
 
+/**
+ * Create school components for each object passed in school list
+ * @param {array[objects]} schoolList list of schools informations to display 
+ * @param {object} classes css classes to pass to created components
+ */
 const renderSchoolList = (schoolList, classes) => {
 	return schoolList.map( school =>{
         const { image, title, period, description, city, website } = school;
@@ -162,28 +207,17 @@ const renderSchoolList = (schoolList, classes) => {
 	});
 }
 
+/**
+ * Main learning component
+ * Get the school to display from ./data
+ * For each one of this scholl, displays a short or large card
+ */
 const SchoolsList = props => {
     const {classes} = props;
 	const schoolsWithImagesFilter = DATA.SCHOOLS.filter( school => school.image );
 	const schoolsWithImages = renderSchoolList(schoolsWithImagesFilter, classes);	
 	const schoolsWithoutImageFilter = DATA.SCHOOLS.filter( school => !school.image );
 	const schoolsWithoutImage = renderSchoolList(schoolsWithoutImageFilter, classes);
-    /*const schools = DATA.SCHOOLS.map( school =>{
-        const { image, title, period, description, city, website, } = school;
-        return(
-            <Grid item key={title} >
-                <School 
-                    image={image}
-                    title={title}
-                    period={period}
-                    description={description}
-                    city={city}
-                    website={website}
-                    classes={classes}
-                />            
-            </Grid>
-        );
-    });*/
     return(
         <div className={classes.schools}>
             <Typography variant='h4' gutterBottom>

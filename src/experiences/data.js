@@ -2,10 +2,10 @@ import angularPic from '../img/languages_icons/angular.png';
 import aureliaPic from '../img/languages_icons/aurelia.png';
 import dialogflowPic from '../img/languages_icons/dialogflow.jpg';
 import javaPic from '../img/languages_icons/java.png';
-import jqueryPic from '../img/languages_icons/jquery.jpg'
+import jqueryPic from '../img/languages_icons/jquery.png'
 import nodePic from '../img/languages_icons/node.png';
 import pythonPic from '../img/languages_icons/python.png';
-import springPic from '../img/languages_icons/spring.jpg';
+import springPic from '../img/languages_icons/spring.png';
 
 const LANGUAGES = {
     angular: {
@@ -50,7 +50,7 @@ const LANGUAGES = {
     }
 };
 
-const { angular, aurelia, dialogflow, java, node, python, jquery, spring } = LANGUAGES;
+const { angular, aurelia, java, node, python, jquery, spring } = LANGUAGES;
 
 // TODO : add ref and images for the langages
 const EXPERIENCES = [
@@ -59,13 +59,13 @@ const EXPERIENCES = [
         context: 'Projet pour le CEA',
         period: { begin: 'août 2018', end: 'maintenant'},
         languages: [python, angular], // TODO: add django ?
-        description: 'Développeur full stack sur un projet d\'analyse et de traitements de données pour le CEA. Utilisation du framework django.',
+        description: 'Développement d’une application web de visualisation, d’analyse et de traitement de données. Utilisation du framework django.',
     },{
         title: 'Chatbot',
         context: 'Stage de fin d\'études',
         period: { begin: 'février 2018', end: 'juillet 2018'},
         languages: [angular, node, java, spring],
-        description: 'Développement d\'un chatbot pour les candidats et les collaborateurs de SII Bordeaux. Utilisation de l\'outil Dialogflow',
+        description: 'Développement d\'un ChatBot pour les candidats et les collaborateurs de SII Bordeaux. Utilisation de l\'outil Dialogflow.',
         website: {
             title: 'Groupe SII',
             href: 'http://www.groupe-sii.com/fr',
@@ -75,7 +75,7 @@ const EXPERIENCES = [
         context: 'Stage de seconde année d\'école d\'ingénieur',
         period: { begin: 'mai 2017', end: 'septembre 2017'},
         languages: [aurelia, jquery, java],
-        description: 'Stage de 3 mois dans la société Multimédia SOLUTIONS à Cestas. Développement d\'une application web de questionnaires dématérialisés.',
+        description: 'Stage effectué dans la société Multimédia SOLUTIONS à Cestas. Développement d\'une application web pour gérer des questionnaires dématérialisés.',
         website: {
             title: 'Multimédia SOLUTIONS',
             href: 'https://www.lug.com/',
