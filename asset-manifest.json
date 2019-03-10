@@ -7,7 +7,7 @@
   "static/js/1.9a7de7a9.chunk.js.map": "/aurelien-alet/static/js/1.9a7de7a9.chunk.js.map",
   "runtime~main.js": "/aurelien-alet/static/js/runtime~main.6d12d41a.js",
   "runtime~main.js.map": "/aurelien-alet/static/js/runtime~main.6d12d41a.js.map",
-  "static/media/index.css": "/aurelien-alet/static/media/roboto-latin-900.19b7a0ad.woff2",
+  "static/media/index.css": "/aurelien-alet/static/media/roboto-latin-900italic.bc833e72.woff",
   "static/media/java.png": "/aurelien-alet/static/media/java.59b0fb60.png",
   "static/media/python.png": "/aurelien-alet/static/media/python.d3f6811c.png",
   "static/media/profile-picture.png": "/aurelien-alet/static/media/profile-picture.b24c485d.png",
@@ -31,6 +31,6 @@
   "static/css/main.f7b4479f.chunk.css.map": "/aurelien-alet/static/css/main.f7b4479f.chunk.css.map",
   "static/css/1.fb94b342.chunk.css.map": "/aurelien-alet/static/css/1.fb94b342.chunk.css.map",
   "index.html": "/aurelien-alet/index.html",
-  "precache-manifest.c5d8b7bf148691b9f24dbc0831cb945d.js": "/aurelien-alet/precache-manifest.c5d8b7bf148691b9f24dbc0831cb945d.js",
+  "precache-manifest.ae35917896d93ea409c7d4e4a41bd8f3.js": "/aurelien-alet/precache-manifest.ae35917896d93ea409c7d4e4a41bd8f3.js",
   "service-worker.js": "/aurelien-alet/service-worker.js"
 }
