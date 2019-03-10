@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/aurelien-alet/precache-manifest.ae35917896d93ea409c7d4e4a41bd8f3.js"
+  "/aurelien-alet/precache-manifest.6a0030f4843d4188c41f9f9d477c7db0.js"
 );
 
 workbox.clientsClaim();
