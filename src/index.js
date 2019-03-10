@@ -36,6 +36,14 @@ class App extends React.Component {
 	}
 
 	/**
+	 * Method called when the component is fully loaded
+	 * Defines the title of the app
+	 */
+	componentDidMount(){
+	    document.title = "Aurélien Alet"
+	}
+
+	/**
 	 * When an item is clicked on the menu, scrools the website to the section 
 	 * corresponding to the selection
 	 * @param {*} event click event 

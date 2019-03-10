@@ -78,7 +78,7 @@ const Contact = props => {
 					<ContactButton 
 						image={linkedinIcon}
 						title='LinkedIn'
-						href='www.linkedin.com/in/aurelien-alet'
+						href='https://www.linkedin.com/in/aurelien-alet'
 						nickname='aurelien-alet'
 						imgClass={classes.img}
 						buttonClass={classes.button}
