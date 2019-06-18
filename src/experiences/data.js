@@ -6,6 +6,7 @@ import jqueryPic from '../img/languages_icons/jquery.png'
 import nodePic from '../img/languages_icons/node.png';
 import pythonPic from '../img/languages_icons/python.png';
 import springPic from '../img/languages_icons/spring.png';
+import javascriptPic from '../img/languages_icons/javascript.png';
 
 const LANGUAGES = {
     angular: {
@@ -47,17 +48,28 @@ const LANGUAGES = {
         title: 'Spring',
         picture: springPic,
         website: 'https://spring.io/',
+    },
+	javascript: {
+        title: 'JavaScript',
+        picture: javascriptPic,
+        website: 'https://developer.mozilla.org/docs/Web/JavaScript',
     }
 };
 
-const { angular, aurelia, java, node, python, jquery, spring } = LANGUAGES;
+const { angular, aurelia, java, node, python, jquery, spring, javascript } = LANGUAGES;
 
-// TODO : add ref and images for the langages
 const EXPERIENCES = [
+	{
+		title: 'Assistant de Déploiement',
+		context: 'Projet pour La Banque Postale',
+		period: { begin: 'mai 2019', end 'maintenant'},
+		languages: [python, javascript],
+		déveleppoment: 'Développement d\'un outil permettant de déployer les applications de La Banque Postale sur des environnements de test et de production.',
+	},
     {
         title: 'Analyse et traitement de données',
         context: 'Projet pour le CEA',
-        period: { begin: 'août 2018', end: 'maintenant'},
+        period: { begin: 'août 2018', end: 'mai 2019'},
         languages: [python, angular], // TODO: add django ?
         description: 'Développement d’une application web de visualisation, d’analyse et de traitement de données. Utilisation du framework django.',
     },{
