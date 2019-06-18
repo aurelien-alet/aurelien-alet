@@ -62,7 +62,7 @@ const EXPERIENCES = [
 	{
 		title: 'Assistant de Déploiement',
 		context: 'Projet pour La Banque Postale',
-		period: { begin: 'mai 2019', end 'maintenant'},
+		period: { begin: 'mai 2019', end: 'maintenant'},
 		languages: [python, javascript],
 		déveleppoment: 'Développement d\'un outil permettant de déployer les applications de La Banque Postale sur des environnements de test et de production.',
 	},
@@ -78,8 +78,8 @@ const EXPERIENCES = [
         period: { begin: 'février 2018', end: 'juillet 2018'},
         languages: [angular, node, java, spring],
         description: 'Développement d\'un ChatBot pour les candidats et les collaborateurs de SII Bordeaux. Utilisation de l\'outil Dialogflow.',
-        website: {
             title: 'Groupe SII',
+        website: {
             href: 'http://www.groupe-sii.com/fr',
         },
     },{
