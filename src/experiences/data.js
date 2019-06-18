@@ -78,8 +78,8 @@ const EXPERIENCES = [
         period: { begin: 'février 2018', end: 'juillet 2018'},
         languages: [angular, node, java, spring],
         description: 'Développement d\'un ChatBot pour les candidats et les collaborateurs de SII Bordeaux. Utilisation de l\'outil Dialogflow.',
-            title: 'Groupe SII',
         website: {
+			title: 'Groupe SII',
             href: 'http://www.groupe-sii.com/fr',
         },
     },{
