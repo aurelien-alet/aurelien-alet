@@ -64,7 +64,7 @@ const EXPERIENCES = [
 		context: 'Projet pour La Banque Postale',
 		period: { begin: 'mai 2019', end: 'maintenant'},
 		languages: [python, javascript],
-		déveleppoment: 'Développement d\'un outil permettant de déployer les applications de La Banque Postale sur des environnements de test et de production.',
+		description: 'Développement d\'un outil permettant de déployer les applications de La Banque Postale sur des environnements de test et de production.',
 	},
     {
         title: 'Analyse et traitement de données',
